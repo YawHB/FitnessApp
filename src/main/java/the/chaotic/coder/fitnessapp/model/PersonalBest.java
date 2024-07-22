@@ -18,7 +18,7 @@ public class PersonalBest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private float weight;
+    private double weight;
     private int reps;
     private LocalDate dateAchieved;
     private String note;

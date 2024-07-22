@@ -8,6 +8,7 @@ import lombok.Setter;
 import the.chaotic.coder.fitnessapp.enums.Gender;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,14 +28,24 @@ public class FitnessUser {
     private String password;
     private LocalDate birthdate;
 
-    @OneToMany(mappedBy = "fitnessUser", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany( cascade =CascadeType.ALL )
+    @JoinColumn(name = "fitness_user_id")
     private List<FitnessUserMeasurement> measurements;
 
-    @OneToMany(mappedBy = "fitnessUser", cascade = CascadeType.REMOVE)
+    @OneToMany( cascade = CascadeType.ALL)
+    @JoinColumn(name = "fitness_user_id")
     private Set<PersonalBest> personalBests;
     private Gender gender;
 
+    //TODO Add many to many with Program
+    @ManyToMany
+    @JoinTable(name = "fitnessuser_standardprogram", joinColumns = @JoinColumn(name = "fitness_user_id"), inverseJoinColumns = @JoinColumn(name = "standard_program_id"))
+    private Set<StandardProgram> standardPrograms = new HashSet<>();
 
+
+    @ManyToMany
+    @JoinTable(name = "fitnessuser_personalprogram", joinColumns = @JoinColumn(name = "fitness_user_id"), inverseJoinColumns = @JoinColumn(name = "personal_program_id"))
+    private Set<PersonalProgram> personalPrograms = new HashSet<>();
 
 
 

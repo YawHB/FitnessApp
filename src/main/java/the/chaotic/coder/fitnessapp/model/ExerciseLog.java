@@ -6,22 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FitnessUserMeasurement {
-
+public class ExerciseLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private LocalDate dateOfMeasurement;
-    private double weight;
-    private int height;
-    private double BMI;
+    private long Id;
+    private String sessionName;
+    private String note;
+
+@OneToMany
+    @JoinColumn(name = "exercise_log_id")
+    private Set<SetLog> setLogs = new HashSet<>();
 
 
 
