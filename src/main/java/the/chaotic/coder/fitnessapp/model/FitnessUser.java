@@ -31,11 +31,11 @@ public class FitnessUser {
     @OneToMany( cascade =CascadeType.ALL )
     @JoinColumn(name = "fitness_user_id")
     private List<FitnessUserMeasurement> measurements;
+    private Gender gender;
 
     @OneToMany( cascade = CascadeType.ALL)
     @JoinColumn(name = "fitness_user_id")
     private Set<PersonalBest> personalBests;
-    private Gender gender;
 
     //TODO Add many to many with Program
     @ManyToMany
