@@ -16,11 +16,14 @@ public class FitnessUserService {
         this.fitnessUserRepository = fitnessUserRepository;
     }
 
+    public List<FitnessUser> getAll() {
+        return fitnessUserRepository.findAll();
+    }
+
+
     public FitnessUser addFitnessUser(FitnessUser fitnessUser) {
         return fitnessUserRepository.save(fitnessUser);
     }
 
-    public List<FitnessUser> getAll() {
-        return fitnessUserRepository.findAll();
-    }
+
 }

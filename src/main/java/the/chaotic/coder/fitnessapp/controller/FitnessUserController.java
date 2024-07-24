@@ -1,9 +1,7 @@
 package the.chaotic.coder.fitnessapp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import the.chaotic.coder.fitnessapp.model.FitnessUser;
 import the.chaotic.coder.fitnessapp.service.FitnessUserService;
 
@@ -21,12 +19,12 @@ public class FitnessUserController {
 
 
     @GetMapping()
-    public List<FitnessUser> getAllFitnessUsers() {
-        return fitnessUserService.getAll();
+    public ResponseEntity<List<FitnessUser>>  getAllFitnessUsers() {
+        return ResponseEntity.ok(fitnessUserService.getAll());
     }
 
     @PostMapping
-    public FitnessUser createFitnessUser(FitnessUser fitnessUser) {
+    public FitnessUser createFitnessUser(@RequestBody FitnessUser fitnessUser) {
 
         return fitnessUserService.addFitnessUser(fitnessUser);
 
