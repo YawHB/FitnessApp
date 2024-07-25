@@ -1,10 +1,12 @@
 package the.chaotic.coder.fitnessapp.service;
 
 import org.springframework.stereotype.Service;
+import the.chaotic.coder.fitnessapp.exception.FitnessUserExistsException;
 import the.chaotic.coder.fitnessapp.model.FitnessUser;
 import the.chaotic.coder.fitnessapp.repository.FitnessUserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FitnessUserService {
@@ -22,7 +24,12 @@ public class FitnessUserService {
 
 
     public FitnessUser addFitnessUser(FitnessUser fitnessUser) {
-        return fitnessUserRepository.save(fitnessUser);
+
+        Optional<FitnessUser> existingUser = fitnessUserRepository.findByEmail(fitnessUser.getEmail());
+        if(existingUser.isPresent()) {
+            throw new FitnessUserExistsException("User with name " + fitnessUser.getEmail() + " already exists");
+        }
+ return fitnessUserRepository.save(fitnessUser);
     }
 
 

@@ -17,16 +17,18 @@ public class FitnessUserController {
         this.fitnessUserService = fitnessUserService;
     }
 
-
+//H1 Get All
     @GetMapping()
     public ResponseEntity<List<FitnessUser>>  getAllFitnessUsers() {
         return ResponseEntity.ok(fitnessUserService.getAll());
     }
 
+    //h1 Create FitnessUser
     @PostMapping
-    public FitnessUser createFitnessUser(@RequestBody FitnessUser fitnessUser) {
+    public ResponseEntity<FitnessUser> createFitnessUser(@RequestBody FitnessUser fitnessUser) {
+        FitnessUser newFitnessUser =  fitnessUserService.addFitnessUser(fitnessUser);
+        return ResponseEntity.status(201).body(newFitnessUser);
 
-        return fitnessUserService.addFitnessUser(fitnessUser);
 
     }
 
