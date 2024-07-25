@@ -1,10 +1,7 @@
 package the.chaotic.coder.fitnessapp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import the.chaotic.coder.fitnessapp.enums.Gender;
 
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class FitnessUser {
@@ -48,5 +46,13 @@ public class FitnessUser {
     private Set<PersonalProgram> personalPrograms = new HashSet<>();
 
 
-
+    public FitnessUser(long id, String firstName, String lastName, String email, String password, LocalDate birthdate, Gender gender) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.gender = gender;
+    }
 }
