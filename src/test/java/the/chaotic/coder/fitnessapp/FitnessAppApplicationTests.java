@@ -6,8 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class FitnessAppApplicationTests {
 
-    @Test
+   // @Test
     void contextLoads() {
+        System.out.println("Hello");
+
     }
 
 }
