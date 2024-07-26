@@ -1,5 +1,6 @@
 package the.chaotic.coder.fitnessapp.controller;
 
+import org.apache.catalina.mbeans.SparseUserDatabaseMBean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import the.chaotic.coder.fitnessapp.model.FitnessUser;
@@ -29,7 +30,14 @@ public class FitnessUserController {
         FitnessUser newFitnessUser =  fitnessUserService.addFitnessUser(fitnessUser);
         return ResponseEntity.status(201).body(newFitnessUser);
 
-
     }
 
+    //H1 Update StandardProgram to FitnessUser
+    @PutMapping("/{userId}/standardprograms/{programId}")
+    public ResponseEntity<FitnessUser> addStandardProgramToFitnessUser(@PathVariable Long userId, @PathVariable Long programId ) {
+
+       return  fitnessUserService.addStandardProgramToFitnessUser(userId, programId);
+
+
+    }
 }

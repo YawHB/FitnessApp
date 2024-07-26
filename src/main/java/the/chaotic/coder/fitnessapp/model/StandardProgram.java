@@ -1,5 +1,6 @@
 package the.chaotic.coder.fitnessapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,9 +26,11 @@ public class StandardProgram {
     private int programDuration;
     private int trainingDaysPerWeek;
     private LocalDate startDate;
+    private boolean isPrivate;
 
     //TODO Add many to many with FitnessUser
     @ManyToMany(mappedBy = "standardPrograms")
+    @JsonIgnore
     private Set<FitnessUser> fitnessUsers = new HashSet<>();
 
     @ManyToMany
