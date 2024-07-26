@@ -8,7 +8,7 @@ import the.chaotic.coder.fitnessapp.service.FitnessUserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fitnessuser")
+@RequestMapping("/fitnessusers")
 public class FitnessUserController {
 
     private final FitnessUserService fitnessUserService;
