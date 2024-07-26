@@ -22,6 +22,7 @@ public class StandardProgram {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String programTitle;
+    @Enumerated(EnumType.STRING)
     private FitnessCategory fitnessCategory;
     private int programDuration;
     private int trainingDaysPerWeek;
