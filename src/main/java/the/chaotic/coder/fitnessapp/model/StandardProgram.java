@@ -1,10 +1,9 @@
 package the.chaotic.coder.fitnessapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +15,7 @@ import the.chaotic.coder.fitnessapp.enums.FitnessCategory;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class StandardProgram {
 
     @Id
@@ -27,9 +27,11 @@ public class StandardProgram {
     private int programDuration;
     private int trainingDaysPerWeek;
     private LocalDate startDate;
+    private boolean isPrivate;
 
     //TODO Add many to many with FitnessUser
     @ManyToMany(mappedBy = "standardPrograms")
+    @JsonIgnore
     private Set<FitnessUser> fitnessUsers = new HashSet<>();
 
     @ManyToMany
