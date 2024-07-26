@@ -1,10 +1,8 @@
 package the.chaotic.coder.fitnessapp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +14,7 @@ import the.chaotic.coder.fitnessapp.enums.FitnessCategory;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class StandardProgram {
 
     @Id
